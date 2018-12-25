@@ -1,0 +1,84 @@
+version: "3"
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+#    build:
+#      context: .
+    restart: always
+    volumes:
+      - ./frontend/dist/frontend:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+#      - ./frontend:/www/app
+    ports:
+      - 8080:80
+    links:
+      - api
+  api:
+    build:
+      context: .
+      dockerfile: ./api/api.dockerfile
+    container_name: api
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    hostname: server
+    ports:
+      - 9000:9000
+    volumes:
+      - ./api/:/www/api
+      #- ./api/public/:/var/www/html
+      - ./www.conf:/usr/local/etc/php-fpm.d/www.conf
+    links:
+      - mysql
+    env_file: ./api/.env
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    environment:
+        - 'MYSQL_ROOT_PASSWORD=test'
+        - 'MYSQL_DATABASE=test'
+    ports:
+      - 3306:3306
+
+
+
+
+
+
+#
+#
+#
+#
+#
+#      version: '2'
+#
+#      services:
+#        web:
+#          build:
+#            context: ./
+#            dockerfile: web.docker
+#          volumes:
+#            - ./:/var/www
+#          ports:
+#            - '8080:80'
+#          links:
+#            - app
+#        app:
+#          build:
+#            context: ./
+#            dockerfile: app.docker
+#          volumes:
+#            - ./:/var/www
+#          links:
+#            - db
+#          environment:
+#            - 'DB_PORT=3306'
+#            - 'DB_HOST=db'
+#        db:
+#          image: mysql:5.7
+#          environment:
+#            - 'MYSQL_ROOT_PASSWORD=secret'
+#            - 'MYSQL_DATABASE=dockerApp'
+#          ports:
+#            - '33061:3306'
