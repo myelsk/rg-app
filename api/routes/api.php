@@ -13,4 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('test', 'testController@test');
+Route::post('/project', [
+    'uses' => 'ProjectController@postProject'
+]);
+
+Route::get('/projects', [
+    'uses' => 'ProjectController@getProject'
+]);
+
+Route::put('/project/{id}', [
+    'uses' => 'ProjectController@putProject'
+]);
+
+Route::delete('/project/{id}', [
+    'uses' => 'ProjectController@deleteProject'
+]);
