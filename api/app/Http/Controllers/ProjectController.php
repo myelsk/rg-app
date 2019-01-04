@@ -38,5 +38,4 @@ class ProjectController extends Controller {
         $tasks->delete();
         return response()->json(['message' => 'Project Deleted'], 200);
     }
-
 }

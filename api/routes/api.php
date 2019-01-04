@@ -28,3 +28,7 @@ Route::put('/project/{id}', [
 Route::delete('/project/{id}', [
     'uses' => 'ProjectController@deleteProject'
 ]);
+
+Route::post('/user', [
+    'uses' => 'UserController@signup'
+]);
