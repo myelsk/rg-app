@@ -14,21 +14,29 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/project', [
-    'uses' => 'ProjectController@postProject'
+    'uses' => 'ProjectController@postProject',
+    'middleware' => 'auth.jwt'
 ]);
 
 Route::get('/projects', [
-    'uses' => 'ProjectController@getProject'
+    'uses' => 'ProjectController@getProject',
+    'middleware' => 'auth.jwt'
 ]);
 
 Route::put('/project/{id}', [
-    'uses' => 'ProjectController@putProject'
+    'uses' => 'ProjectController@putProject',
+    'middleware' => 'auth.jwt'
 ]);
 
 Route::delete('/project/{id}', [
-    'uses' => 'ProjectController@deleteProject'
+    'uses' => 'ProjectController@deleteProject',
+    'middleware' => 'auth.jwt'
 ]);
 
 Route::post('/user', [
     'uses' => 'UserController@signup'
+]);
+
+Route::post('/user/signin', [
+    'uses' => 'UserController@signin'
 ]);

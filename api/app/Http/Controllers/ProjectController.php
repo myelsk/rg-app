@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\Task;
+use JWTAuth;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller {
 
     public function postProject(Request $request) {
+        $user = JWTAuth::parseToken()->toUser();
         $project = new Project();
         $project->name = $request->input('name');
         $project->save();
