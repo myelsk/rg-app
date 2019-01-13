@@ -1,15 +1,28 @@
+<ng-container *ngIf="projects">
+    <ng-container *ngFor="let project of projects">
+        <!--<div *ngFor="let project of projects">-->
+        <div class="project-wrap clearfix">
+            <div class="project-title">
+                <i class="fas fa-calendar-alt"></i>
+                <input placeholder="Complete the test task for Ruby Garage" [disabled]="disabled" value="{{ project.name }}">
+            </div>
+            <div class="project-actions">
+                <i class="fas fa-pencil-alt"></i>
+                <i class="far fa-trash-alt"></i>
+            </div>
+        </div>
+        <app-add-task></app-add-task>
+        <app-task></app-task>
+        <!--</div>-->
+    </ng-container>
 
-  <div class="project-wrap clearfix">
-    <div class="project-title">
-      <i class="fas fa-calendar-alt"></i>
-      <p>Complete the test task for Ruby Garage</p>
-    </div>
-    <div class="project-actions">
-      <i class="fas fa-pencil-alt"></i>
-      <i class="far fa-trash-alt"></i>
-    </div>
+</ng-container>
+
+<app-logout></app-logout>
+
+  <div class="create-project-wrap">
+      <a href="#">
+          <i class="fas fa-plus create-project-icon"></i>
+          Add TODO List
+      </a>
   </div>
-  <app-add-task></app-add-task>
-  <app-task></app-task>
-  <app-create-project></app-create-project>
-  <app-logout></app-logout>

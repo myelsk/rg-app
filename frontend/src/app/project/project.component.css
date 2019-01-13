@@ -43,3 +43,41 @@ p {
     cursor: pointer;
     padding-left: 7px;
 }
+
+
+.create-project-wrap {
+    text-align: center;
+}
+
+.create-project-wrap a {
+    text-decoration: none;
+    background: #3f65ae;
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    margin-top: 49px;
+    padding: 14px 53px;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.create-project-icon {
+    font-size: 25px;
+    color: #32496f;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+}
+
+.project-title input {
+    width: 527px;
+    color: #fff;
+    border: 0;
+    background: #3f65ae;
+    outline: 0;
+    height: 50px;
+}
+
+.project-title input::placeholder {
+    color: #fff;
+}

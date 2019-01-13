@@ -11,7 +11,6 @@ import {AuthService} from "./auth.service";
 import { ProjectComponent } from './project/project.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { TaskComponent } from './task/task.component';
-import { CreateProjectComponent } from './create-project/create-project.component';
 import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { LogoutComponent } from './logout/logout.component';
     ProjectComponent,
     AddTaskComponent,
     TaskComponent,
-    CreateProjectComponent,
     LogoutComponent,
   ],
   imports: [
@@ -32,7 +30,7 @@ import { LogoutComponent } from './logout/logout.component';
       FormsModule
   ],
   providers: [
-      AuthService
+      AuthService,
   ],
   bootstrap: [AppComponent]
 })

@@ -33,6 +33,26 @@ Route::delete('/project/{id}', [
     'middleware' => 'auth.jwt'
 ]);
 
+Route::get('/tasks', [
+    'uses' => 'TaskController@getTask',
+    'middleware' => 'auth.jwt'
+]);
+
+Route::post('/task', [
+    'uses' => 'TaskController@postTask',
+    'middleware' => 'auth.jwt'
+]);
+
+Route::put('/task/{id}', [
+    'uses' => 'TaskController@putTask',
+    'middleware' => 'auth.jwt'
+]);
+
+Route::delete('/task/{id}', [
+    'uses' => 'TaskController@deleteTask',
+    'middleware' => 'auth.jwt'
+]);
+
 Route::post('/user', [
     'uses' => 'UserController@signup'
 ]);

@@ -10,34 +10,35 @@ class TaskController extends Controller {
     public function postTask(Request $request) {
         $task = new Task();
         $task->name = $request->input('name');
-        $task->description = $request->input('description');
         $task->isDone = $request->input('isDone');
         $task->project_id = $request->input('project_id');
-        $task->priority = $request->input('priority');
         $task->deadline = $request->input('deadline');
         $task->save();
         return response()->json(['task' => $task], 201);
     }
 
-    public function getProject() {
+    public function getTask() {
 
-        $quotes = Task::all();
-        return response()->json(['quotes' => $quotes], 200);
+        $tasks = Task::all();
+        return response()->json(['tasks' => $tasks], 200);
 
     }
 
-    public function putProject(Request $request, $id) {
-        $quote = Task::find($id);
-        if(!$quote) return response()->json(['message' => 'document not found']);
+    public function putTask(Request $request, $id) {
+        $task = Task::find($id);
+        if(!$task) return response()->json(['message' => 'document not found']);
 
-        $quote->content = $request->input('content');
-        $quote->save();
-        return response()->json(['quote' => $quote], 200);
+        $task->name = $request->input('name');
+        $task->isDone = $request->input('isDone');
+        $task->project_id = $request->input('project_id');
+        $task->deadline = $request->input('deadline');
+        $task->save();
+        return response()->json(['task' => $task], 200);
     }
 
-    public function deleteProject($id) {
-        $quote = Task::find($id);
-        $quote->delete();
-        return response()->json(['message' => 'Quote Deleted'], 200);
+    public function deleteTask($id) {
+        $task = Task::find($id);
+        $task->delete();
+        return response()->json(['message' => 'Task Deleted'], 200);
     }
 }
