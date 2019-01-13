@@ -1,5 +1,10 @@
 <div class="create-task-wrap">
   <i class="fas fa-plus create-task-icon"></i>
   <input type="text" placeholder="Start typing here to create a task...">
+    <mat-form-field>
+      <input matInput [matDatepicker]="dp3" placeholder="Set deadline date" disabled>
+      <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+      <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+    </mat-form-field>
   <button class="add-task-button">Add Task</button>
 </div>

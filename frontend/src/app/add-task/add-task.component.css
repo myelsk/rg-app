@@ -18,11 +18,11 @@
 
 .create-task-wrap input {
     height: 31px;
-    width: 79%;
+    width: 40%;
     padding-left: 11px;
     font-size: 13px;
     padding-bottom: 2px;
-    margin-top: 2px;
+    margin-top: -12px;
     color: #8e8e8e;
     outline: 0;
     box-sizing: border-box;
@@ -39,8 +39,7 @@
     cursor: pointer;
     background: linear-gradient(#94cbae, #508767);
     border: 1px solid #447557;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-radius: 4px;
     color: #fff;
     text-shadow: 0 1px 1px rgba(0,0,0,0.7);
     outline: 0;

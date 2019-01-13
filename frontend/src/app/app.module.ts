@@ -12,6 +12,7 @@ import { ProjectComponent } from './project/project.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { TaskComponent } from './task/task.component';
 import { LogoutComponent } from './logout/logout.component';
+import {MaterialModule} from "./material.module";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LogoutComponent } from './logout/logout.component';
     BrowserModule,
       HttpClientModule,
       AppRoutingModule,
-      FormsModule
+      FormsModule,
+      MaterialModule
   ],
   providers: [
       AuthService,
