@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\Task;
+use Illuminate\Support\Facades\DB;
 use JWTAuth;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,9 @@ class ProjectController extends Controller {
         return response()->json(['project' => $project], 201);
     }
 
-    public function getProject() {
+    public function getProject($user_id) {
 
-        $projects = Project::all();
+        $projects = DB::table('projects')->where('user_id', $user_id)->get();
         return response()->json(['projects' => $projects], 200);
 
     }

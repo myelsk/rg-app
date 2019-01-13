@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller {
 
@@ -17,9 +18,8 @@ class TaskController extends Controller {
         return response()->json(['task' => $task], 201);
     }
 
-    public function getTask() {
-
-        $tasks = Task::all();
+    public function getTask($id) {
+        $tasks = DB::table('tasks')->where('project_id', $id)->get();
         return response()->json(['tasks' => $tasks], 200);
 
     }

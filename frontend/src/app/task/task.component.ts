@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TaskService} from "../task.service";
 import {AuthService} from "../auth.service";
 import {Task} from "../models/Task";
@@ -11,11 +11,12 @@ import {Task} from "../models/Task";
 export class TaskComponent implements OnInit {
 
   tasks: Task[];
+  @Input() project_id;
 
   constructor(private taskService: TaskService, private authService: AuthService) { }
 
   getTasks() {
-    this.taskService.get('/api/tasks?token=' + this.authService.getToken()).subscribe(
+    this.taskService.get('/api/tasks/' + this.project_id + '?token=' + this.authService.getToken()).subscribe(
         data => this.tasks = data.tasks
     );
   }
@@ -33,6 +34,7 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getTasks();
   }
 
 }

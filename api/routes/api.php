@@ -18,7 +18,7 @@ Route::post('/project', [
     'middleware' => 'auth.jwt'
 ]);
 
-Route::get('/projects', [
+Route::get('/projects/{user_id}', [
     'uses' => 'ProjectController@getProject',
     'middleware' => 'auth.jwt'
 ]);
@@ -33,7 +33,7 @@ Route::delete('/project/{id}', [
     'middleware' => 'auth.jwt'
 ]);
 
-Route::get('/tasks', [
+Route::get('/tasks/{id}', [
     'uses' => 'TaskController@getTask',
     'middleware' => 'auth.jwt'
 ]);

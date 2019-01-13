@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../project.service";
 import {AuthService} from "../auth.service";
 import {Project} from "../models/Project";
@@ -11,7 +11,6 @@ import {Project} from "../models/Project";
 export class ProjectComponent implements OnInit {
 
   projects: Project[];
-
   disabled: boolean = true;
 
   constructor(private projectService: ProjectService, private authService: AuthService) {}
@@ -19,7 +18,7 @@ export class ProjectComponent implements OnInit {
 
 //.subscribe(res => {this.projects = res})
   getProjects() {
-    this.projectService.get('/api/projects?token=' + this.authService.getToken()).subscribe(
+    this.projectService.get('/api/projects/' + this.authService.getId() + '?token=' + this.authService.getToken()).subscribe(
         data => this.projects = data.projects
     );
   }
@@ -36,11 +35,9 @@ export class ProjectComponent implements OnInit {
     this.projectService.delete('/api/project/1').subscribe();
   }
 
-
   ngOnInit() {
     // console.log('app initialized');
     this.getProjects();
-    this.postProject();
     // this.putProject();
     // this.deleteProject();
     // this.projects = this.route.snapshot.data.projects;
