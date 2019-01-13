@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller {
 
     public function postProject(Request $request) {
-        $user = JWTAuth::parseToken()->toUser();
+//        $user = JWTAuth::parseToken()->toUser();
         $project = new Project();
         $project->name = $request->input('name');
+        $project->user_id = $request->input('user_id');
         $project->save();
         return response()->json(['project' => $project], 201);
     }

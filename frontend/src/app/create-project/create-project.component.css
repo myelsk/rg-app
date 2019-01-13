@@ -1,0 +1,23 @@
+.create-project-wrap {
+    text-align: center;
+}
+
+.create-project-wrap a {
+    text-decoration: none;
+    background: #3f65ae;
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    margin-top: 49px;
+    padding: 14px 53px;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.create-project-icon {
+    font-size: 25px;
+    color: #32496f;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+}

@@ -12,7 +12,7 @@ export class SignupComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   onSignup(form: NgForm) {
-    this.authService.signup(form.value.username, form.value.email, form.value.password).subscribe(
+    this.authService.signup(form.value.name, form.value.email, form.value.password).subscribe(
         response => console.log(response),
         error => console.log(error)
     );

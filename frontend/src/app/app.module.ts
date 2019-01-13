@@ -8,12 +8,22 @@ import { SigninComponent } from './signin/signin.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from "@angular/forms";
 import {AuthService} from "./auth.service";
+import { ProjectComponent } from './project/project.component';
+import { AddTaskComponent } from './add-task/add-task.component';
+import { TaskComponent } from './task/task.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     SigninComponent,
+    ProjectComponent,
+    AddTaskComponent,
+    TaskComponent,
+    CreateProjectComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

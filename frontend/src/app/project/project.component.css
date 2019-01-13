@@ -1,0 +1,45 @@
+p {
+    margin: 0;
+}
+
+.project-wrap {
+    height: 50px;
+    background: #3f65ae;
+}
+
+.project-title {
+    line-height: 50px;
+    position: relative;
+    padding-left: 53px;
+    float: left;
+}
+
+.project-actions {
+    float: right;
+    padding: 16px 18px 0 0;
+    color: #98b0d2;
+}
+
+.project-title p {
+    color: #fff;
+    font-size: 17px;
+}
+
+.fa-calendar-alt {
+    position: absolute;
+    top: 11px;
+    left: 19px;
+    font-size: 24px;
+    color: #1f2b3d;
+}
+
+.project-actions .fa-pencil-alt {
+    cursor: pointer;
+    padding-right: 9px;
+    border-right: 1px solid #98b0d2;
+}
+
+.project-actions .fa-trash-alt {
+    cursor: pointer;
+    padding-left: 7px;
+}

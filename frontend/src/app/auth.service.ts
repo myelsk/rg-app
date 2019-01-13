@@ -26,13 +26,26 @@ export class AuthService {
             password: password
         }, {headers: new HttpHeaders({'X-Requested-With': 'XMLHttpRequest'})}).pipe(
             tap(
-                (res:any) => localStorage.setItem('token', res.token)
+                (res:any) => localStorage.setItem('token', res.token),
+            ),
+            tap(
+                (res:any) => localStorage.setItem('user_id', res.user_id)
             )
         );
     }
 
+
+    logout() {
+        localStorage.clear();
+    }
+
+
     getToken() {
         return localStorage.getItem('token');
+    }
+
+    getId() {
+        return localStorage.getItem('user_id');
     }
 
 
