@@ -1,3 +1,15 @@
+<div class="create-task-wrap">
+  <i class="fas fa-plus create-task-icon"></i>
+  <form class="add-task-form" (ngSubmit)="postTask(f)" #f="ngForm">
+    <input type="text" name="name" placeholder="Start typing here to create a task..." ngModel required>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dp3" placeholder="Set deadline date" name="deadline" ngModel>
+      <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+      <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <button class="add-task-button" type="submit" [disabled]="!f.valid">Add Task</button>
+  </form>
+</div>
 <ng-container *ngIf="tasks">
   <div class="task" *ngFor="let task of tasks">
     <div class="done-checkbox">
@@ -15,7 +27,7 @@
         <i class="fas fa-pencil-alt"></i>
       </div>
       <div class="delete-task">
-        <i class="far fa-trash-alt"></i>
+        <i class="far fa-trash-alt"  (click)="deleteTask(task.id)"></i>
       </div>
     </div>
   </div>

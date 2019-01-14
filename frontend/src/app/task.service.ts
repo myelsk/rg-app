@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import {environment} from "../environments/environment";
 
@@ -16,7 +16,7 @@ export class TaskService {
     }
 
     public post(url: string, task) {
-        return this.httpClient.post(environment.api_server + url, task);
+        return this.httpClient.post(environment.api_server + url, task, {headers: new HttpHeaders({'X-Requested-With': 'XMLHttpRequest'})});
     }
 
     public put(url: string, task) {

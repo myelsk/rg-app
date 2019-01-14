@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller {
 
-    public function postTask(Request $request) {
+    public function postTask(Request $request, $project_id) {
         $task = new Task();
         $task->name = $request->input('name');
         $task->isDone = $request->input('isDone');
-        $task->project_id = $request->input('project_id');
+        $task->project_id = $project_id;
         $task->deadline = $request->input('deadline');
         $task->save();
         return response()->json(['task' => $task], 201);

@@ -21,3 +21,7 @@ body,
 [id^=mat-input] {
     margin-bottom: -8px !important;
 }
+
+.mat-focused .mat-form-field-label {
+    display: none !important;
+}

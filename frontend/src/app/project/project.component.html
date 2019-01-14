@@ -1,6 +1,5 @@
 <ng-container *ngIf="projects">
     <ng-container *ngFor="let project of projects">
-        <!--<div *ngFor="let project of projects">-->
         <div class="project-wrap clearfix">
             <div class="project-title">
                 <i class="fas fa-calendar-alt"></i>
@@ -11,11 +10,9 @@
                 <i class="far fa-trash-alt"></i>
             </div>
         </div>
-        <app-add-task></app-add-task>
+        <!--<app-add-task [project_id]="project.id"></app-add-task>-->
         <app-task [project_id]="project.id"></app-task>
-        <!--</div>-->
     </ng-container>
-
 </ng-container>
 
 <app-logout></app-logout>

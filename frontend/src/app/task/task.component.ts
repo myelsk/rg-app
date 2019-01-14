@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TaskService} from "../task.service";
 import {AuthService} from "../auth.service";
 import {Task} from "../models/Task";
+import {map} from "rxjs/internal/operators";
+import {NgForm} from "@angular/forms";
+import {Observable} from "rxjs/index";
 
 @Component({
   selector: 'app-task',
@@ -15,26 +18,40 @@ export class TaskComponent implements OnInit {
 
   constructor(private taskService: TaskService, private authService: AuthService) { }
 
-  getTasks() {
-    this.taskService.get('/api/tasks/' + this.project_id + '?token=' + this.authService.getToken()).subscribe(
-        data => this.tasks = data.tasks
-    );
+  postTask(form: NgForm) {
+    this.taskService.post('/api/task/' + this.project_id + '?token=' + this.authService.getToken(), {
+      name: form.value.name,
+      deadline: new Date(form.value.deadline).getTime(),
+      isDone: false,
+      project_id: this.project_id
+    }).subscribe();
   }
 
-  postProject() {
-    this.taskService.post('/api/project?token=' + this.authService.getToken(), {name: "project created with Angularrr", user_id: 1}).subscribe();
+
+
+  getTasks():Observable<any> {
+    return this.taskService.get('/api/tasks/' + this.project_id + '?token=' + this.authService.getToken());
   }
 
   putProject() {
     this.taskService.put('/api/project/1', {id: 1, name: 'updated with Angular'}).subscribe();
   }
 
-  deleteProject() {
-    this.taskService.delete('/api/project/1').subscribe();
+  deleteTask(id) {
+    this.taskService.delete('/api/task/' + id + '?token=' + this.authService.getToken()).subscribe();
   }
 
+
+  // ngOnInit(): void {
+  //   this.intervalHolder = setInterval(() => {
+  //     // Let's refresh the list.
+  //     this._changeDetectorRef.markForCheck();
+  //   }, 1000 * 60); // 1 minute
+  // }
+
   ngOnInit() {
-    this.getTasks();
+    this.getTasks().subscribe(res => this.tasks = res.tasks);
+    // this.tasks = this.getTasks();
   }
 
 }

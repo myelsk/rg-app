@@ -3,5 +3,5 @@ export class Task {
     name: string;
     project_id: number;
     isDone: boolean;
-    deadline: string;
+    deadline: number;
 }

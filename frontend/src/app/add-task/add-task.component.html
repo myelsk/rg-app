@@ -1,10 +1,12 @@
 <div class="create-task-wrap">
   <i class="fas fa-plus create-task-icon"></i>
-  <input type="text" placeholder="Start typing here to create a task...">
+  <form class="add-task-form" (ngSubmit)="postTask(f)" #f="ngForm">
+    <input type="text" name="name" placeholder="Start typing here to create a task..." ngModel required>
     <mat-form-field>
-      <input matInput [matDatepicker]="dp3" placeholder="Set deadline date" disabled>
+      <input matInput [matDatepicker]="dp3" placeholder="Set deadline date" name="deadline" ngModel>
       <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
       <mat-datepicker #dp3 disabled="false"></mat-datepicker>
     </mat-form-field>
-  <button class="add-task-button">Add Task</button>
+    <button class="add-task-button" type="submit" [disabled]="!f.valid" (click)="getTasks()">Add Task</button>
+  </form>
 </div>

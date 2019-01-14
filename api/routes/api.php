@@ -38,7 +38,7 @@ Route::get('/tasks/{id}', [
     'middleware' => 'auth.jwt'
 ]);
 
-Route::post('/task', [
+Route::post('/task/{project_id}', [
     'uses' => 'TaskController@postTask',
     'middleware' => 'auth.jwt'
 ]);
