@@ -1,6 +1,6 @@
 <div class="create-task-wrap">
   <i class="fas fa-plus create-task-icon"></i>
-  <form class="add-task-form" (ngSubmit)="postTask(f)" #f="ngForm">
+  <form class="add-task-form" (ngSubmit)="postTask(f); f.resetForm()" #f="ngForm">
     <input type="text" name="name" placeholder="Start typing here to create a task..." ngModel required>
     <mat-form-field>
       <input matInput [matDatepicker]="dp3" placeholder="Set deadline date" name="deadline" ngModel>
@@ -18,16 +18,22 @@
     <div class="task-body">
       {{ task.name }}
     </div>
+    <span class="deadline-expired" *ngIf="task.deadline < getCurrentTimestamp()">
+      (deadline - {{ task.deadline | date }}) - expired
+    </span>
+    <span class="deadline" *ngIf="task.deadline > getCurrentTimestamp()">
+      (deadline - {{ task.deadline | date }})
+    </span>
     <div class="task-actions">
       <div class="task-change-priority">
-        <i class="fas fa-sort-up"></i>
-        <i class="fas fa-sort-down"></i>
+        <i class="fas fa-sort-up" (click)="increasePriority(task)"></i>
+        <i class="fas fa-sort-down" (click)="decreasePriority()"></i>
       </div>
       <div class="edit-task">
         <i class="fas fa-pencil-alt"></i>
       </div>
       <div class="delete-task">
-        <i class="far fa-trash-alt"  (click)="deleteTask(task.id)"></i>
+        <i class="far fa-trash-alt" (click)="deleteTask(task)"></i>
       </div>
     </div>
   </div>

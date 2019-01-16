@@ -120,3 +120,17 @@
 .add-task-button:hover {
     background: linear-gradient(#508767, #94cbae);
 }
+
+.deadline, .deadline-expired {
+    margin-left: 7px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.deadline {
+    color: #3f65ae;
+}
+
+.deadline-expired {
+    color: red;
+}

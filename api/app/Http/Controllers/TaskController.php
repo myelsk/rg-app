@@ -15,7 +15,7 @@ class TaskController extends Controller {
         $task->project_id = $project_id;
         $task->deadline = $request->input('deadline');
         $task->save();
-        return response()->json(['task' => $task], 201);
+        return response()->json([$task], 201);
     }
 
     public function getTask($id) {
