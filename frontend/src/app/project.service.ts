@@ -24,7 +24,7 @@ export class ProjectService {
         return this.httpClient.put(environment.api_server + url, project);
     }
 
-    public delete(url) {
+    public destroy(url) {
         return this.httpClient.delete(environment.api_server + url);
     }
 }

@@ -1,0 +1,17 @@
+.logout-wrap {
+    text-align: center;
+}
+
+button {
+    background: #3f65ae;
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    margin-top: 20px;
+    padding: 14px 77px;
+    font-weight: bold;
+    border-radius: 2px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+}

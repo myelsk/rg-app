@@ -16,7 +16,7 @@ class ProjectController extends Controller {
         $project->name = $request->input('name');
         $project->user_id = $request->input('user_id');
         $project->save();
-        return response()->json(['project' => $project], 201);
+        return response()->json([$project], 201);
     }
 
     public function getProject($user_id) {

@@ -2,12 +2,14 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {Observable} from 'rxjs';
 import { tap } from 'rxjs/operators';
+import {Router} from "@angular/router";
 
 @Injectable()
 
 export class AuthService {
 
-    constructor(private http: HttpClient) {}
+
+    constructor(private http: HttpClient, private router: Router) {}
 
 
     signup(username: string, email: string, password: string) {
@@ -30,6 +32,11 @@ export class AuthService {
             ),
             tap(
                 (res:any) => localStorage.setItem('user_id', res.user_id)
+            ),
+            tap(
+                res => {
+                    this.router.navigate(['project']);
+                }
             )
         );
     }

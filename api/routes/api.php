@@ -48,8 +48,18 @@ Route::put('/task/{id}', [
     'middleware' => 'auth.jwt'
 ]);
 
-Route::delete('/task/{id}', [
+Route::delete('/task/{id}/{priority}', [
     'uses' => 'TaskController@deleteTask',
+    'middleware' => 'auth.jwt'
+]);
+
+Route::put('task/increase/{project_id}/{priority}', [
+    'uses' => 'TaskController@increasePriority',
+    'middleware' => 'auth.jwt'
+]);
+
+Route::put('task/decrease/{project_id}/{priority}', [
+    'uses' => 'TaskController@decreasePriority',
     'middleware' => 'auth.jwt'
 ]);
 

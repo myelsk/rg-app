@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../project.service";
 import {AuthService} from "../auth.service";
 import {Project} from "../models/Project";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-project',
@@ -11,36 +12,43 @@ import {Project} from "../models/Project";
 export class ProjectComponent implements OnInit {
 
   projects: Project[];
-  disabled: boolean = true;
+  disabled: boolean;
 
-  constructor(private projectService: ProjectService, private authService: AuthService) {}
+  constructor(private projectService: ProjectService, private authService: AuthService, private router: Router) {
+      router.navigate(['signin']);
+  }
 
-
-//.subscribe(res => {this.projects = res})
   getProjects() {
-    this.projectService.get('/api/projects/' + this.authService.getId() + '?token=' + this.authService.getToken()).subscribe(
-        data => this.projects = data.projects
-    );
+    return this.projectService.get('/api/projects/' + this.authService.getId() + '?token=' + this.authService.getToken());
   }
 
   postProject() {
-    this.projectService.post('/api/project?token=' + this.authService.getToken(), {name: "project created with Angularrr", user_id: 1}).subscribe();
+    this.projectService.post('/api/project?token=' + this.authService.getToken(), {name: "project created with Angularrr", user_id: 1}).subscribe(
+        res => this.projects.push(res[0])
+    );
   }
 
   putProject() {
     this.projectService.put('/api/project/1', {id: 1, name: 'updated with Angular'}).subscribe();
   }
 
-  deleteProject() {
-    this.projectService.delete('/api/project/1').subscribe();
+  deleteProject(project) {
+    this.projectService.destroy('/api/project/' + project.id + '?token=' + this.authService.getToken()).subscribe(
+        res => {
+          let index = this.projects.indexOf(project);
+          if(index > -1) {
+            this.projects.splice(index, 1);
+          }
+        }
+    );
   }
 
   ngOnInit() {
-    // console.log('app initialized');
-    this.getProjects();
-    // this.putProject();
-    // this.deleteProject();
-    // this.projects = this.route.snapshot.data.projects;
-    // console.log(this.projects);
+    this.getProjects().subscribe(
+        data => {
+          this.projects = data.projects
+          console.log(data);
+        }
+    );
   }
 }
