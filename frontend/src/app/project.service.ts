@@ -15,8 +15,7 @@ export class ProjectService {
         return this.httpClient.get(environment.api_server + url);
     }
 
-    public post(url: string, project) { //project: Project
-        // const token = this.authService.getToken();
+    public post(url: string, project) {
         return this.httpClient.post(environment.api_server + url, project);
     }
 

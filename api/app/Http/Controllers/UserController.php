@@ -12,9 +12,9 @@ class UserController extends Controller {
 
     public function signup(Request $request) {
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
-            'password' => 'required'
+            'password' => 'required|min:3'
         ]);
 
         $user = new User([

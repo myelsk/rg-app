@@ -9,6 +9,8 @@ import {NgForm} from "@angular/forms";
 })
 export class SigninComponent implements OnInit {
 
+  error: string;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -17,7 +19,9 @@ export class SigninComponent implements OnInit {
   onSignin(form: NgForm) {
     this.authService.signin(form.value.email, form.value.password).subscribe(
         decodedToken => console.log(decodedToken),
-        error => console.log(error),
+        error => {
+          this.error = error.error.error;
+        }
     );
   }
 }

@@ -9,14 +9,35 @@ import {AuthService} from "../auth.service";
 })
 export class SignupComponent implements OnInit {
 
+    model: object = {};
+    errors: [];
+    onKeyUpNameInput: boolean;
+    onKeyUpMailInput: boolean;
+    onKeyUpPasswordInput: boolean;
+
   constructor(private authService: AuthService) { }
 
   onSignup(form: NgForm) {
     this.authService.signup(form.value.name, form.value.email, form.value.password).subscribe(
         response => console.log(response),
-        error => console.log(error)
+        error => {
+          this.errors = error.error.errors;
+          console.log(this.errors);
+        }
     );
   }
+
+  onKeyUpName() {
+      this.onKeyUpNameInput = true;
+  }
+
+  onKeyUpMail() {
+      this.onKeyUpMailInput = true;
+  }
+
+    onKeyUpPassword() {
+        this.onKeyUpPasswordInput = true;
+    }
 
   ngOnInit() {
   }

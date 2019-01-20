@@ -25,3 +25,11 @@ body,
 .mat-focused .mat-form-field-label {
     display: none !important;
 }
+
+.alert {
+    padding: 20px;
+    background-color: red;
+    color: white;
+    width: 360px;
+    margin: 0 auto 15px auto;
+}
