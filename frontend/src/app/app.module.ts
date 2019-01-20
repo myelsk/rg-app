@@ -12,6 +12,7 @@ import {ProjectComponent} from './project/project.component';
 import {TaskComponent} from './task/task.component';
 import {LogoutComponent} from './logout/logout.component';
 import {MaterialModule} from "./material.module";
+import {AuthGuard} from "./auth.guard";
 
 @NgModule({
     declarations: [
@@ -30,7 +31,7 @@ import {MaterialModule} from "./material.module";
         MaterialModule
     ],
     providers: [
-        AuthService,
+        AuthService, AuthGuard
     ],
     bootstrap: [AppComponent]
 })

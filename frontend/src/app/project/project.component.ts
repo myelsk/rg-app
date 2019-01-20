@@ -14,9 +14,7 @@ export class ProjectComponent implements OnInit {
   projects: Project[];
   disabled: boolean;
 
-  constructor(private projectService: ProjectService, private authService: AuthService, private router: Router) {
-      router.navigate(['signin']);
-  }
+  constructor(private projectService: ProjectService, private authService: AuthService, private router: Router) {}
 
   getProjects() {
     return this.projectService.get('/api/projects/' + this.authService.getId() + '?token=' + this.authService.getToken());

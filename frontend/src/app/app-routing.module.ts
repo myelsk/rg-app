@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from "./signin/signin.component";
 import { SignupComponent } from "./signup/signup.component";
 import {ProjectComponent} from "./project/project.component";
+import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   {
     path: 'project',
     component: ProjectComponent,
+    canActivate: [AuthGuard]
   }
 ];
 @NgModule({

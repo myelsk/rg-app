@@ -55,5 +55,9 @@ export class AuthService {
         return localStorage.getItem('user_id');
     }
 
+    isLoggedIn() {
+        return localStorage.getItem('token') != null;
+    }
+
 
 }
