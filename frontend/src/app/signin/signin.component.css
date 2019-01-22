@@ -85,3 +85,7 @@
 .container .info span .fa {
     color: #EF3B3A;
 }
+
+[disabled] {
+    opacity: 0.1;
+}

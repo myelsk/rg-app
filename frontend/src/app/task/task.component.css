@@ -135,7 +135,33 @@
     color: red;
 }
 
-.done {
+.deadline-done {
     color: #999;
+}
+
+.done {
     text-decoration: line-through;
+}
+
+.task:hover input {
+    background: #fcfed5;
+    /*border: 1px solid #8e8e8e;*/
+    outline: 0;
+}
+
+.task-text {
+    color: #999;
+    font-weight: bold;
+    border: 0;
+    background: #fff;
+    outline: 0;
+    width: 350px;
+}
+
+.task-text-edit {
+    outline: 0;
+    color: #999;
+    font-weight: bold;
+    border: 1px solid #8e8e8e;
+    width: 250px;
 }

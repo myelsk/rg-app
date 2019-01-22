@@ -46,6 +46,11 @@ export class ProjectComponent implements OnInit {
         data => {
           this.projects = data.projects
           console.log(data);
+        },
+        err => {
+            if(err.status === 401) {
+                this.router.navigate(['signin']);
+            }
         }
     );
   }

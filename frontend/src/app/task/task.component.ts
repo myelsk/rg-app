@@ -14,6 +14,9 @@ export class TaskComponent implements OnInit {
 
   isDone: boolean = false;
   tasks: Task[];
+  editing: boolean = false;
+  editValue: string;
+  editId: number;
   @Input() project_id: number;
 
   constructor(private taskService: TaskService, private authService: AuthService) { }
@@ -33,10 +36,28 @@ export class TaskComponent implements OnInit {
     return this.taskService.get('/api/tasks/' + this.project_id + '?token=' + this.authService.getToken());
   }
 
-  putProject() {
-    this.taskService.put('/api/project/1', {id: 1, name: 'updated with Angular'}).subscribe();
+  onEdit(task) {
+    this.editing = true;
+    this.editValue = task.name;
+    this.editId = task.priority;
   }
 
+  putTask(task) {
+    this.taskService.put('/api/task/' + task.id + "?token=" + this.authService.getToken(), {
+      name: this.editValue,
+      isDone: task.isDone,
+    }).subscribe(
+        (task: Task) => {
+          this.tasks[task.priority].name = this.editValue;
+        }
+    );
+    this.editing = false;
+  }
+
+  onCancelEditing() {
+    this.editValue = '';
+    this.editing = false;
+  }
 
   deleteTask(task: Task) {
     this.taskService.destroy('/api/task/' + task.id + '/' + task.priority + '?token=' + this.authService.getToken()).subscribe(
