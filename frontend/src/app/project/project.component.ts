@@ -13,6 +13,9 @@ export class ProjectComponent implements OnInit {
 
   projects: Project[];
   disabled: boolean;
+  editing: boolean = false;
+    editValue: string;
+    editId: number;
 
   constructor(private projectService: ProjectService, private authService: AuthService, private router: Router) {}
 
@@ -26,9 +29,16 @@ export class ProjectComponent implements OnInit {
     );
   }
 
-  putProject() {
-    this.projectService.put('/api/project/1', {id: 1, name: 'updated with Angular'}).subscribe();
+  putProject(project) {
+    this.projectService.put('/api/project/' + project.id + '?token=' + this.authService.getToken(), {name: this.editValue}).subscribe(
+        (project: Project) => {
+            const index = this.projects.map(project => project.id).indexOf(project.id);
+            this.projects[index].name = this.editValue;
+        }
+    );
+    this.editing = false;
   }
+
 
   deleteProject(project) {
     this.projectService.destroy('/api/project/' + project.id + '?token=' + this.authService.getToken()).subscribe(
@@ -41,10 +51,21 @@ export class ProjectComponent implements OnInit {
     );
   }
 
+    onCancelEditing() {
+        this.editValue = '';
+        this.editing = false;
+    }
+
+    onEdit(project) {
+        this.editing = true;
+        this.editValue = project.name;
+        this.editId = this.projects.map(project => project.id).indexOf(project.id);
+    }
+
   ngOnInit() {
     this.getProjects().subscribe(
         data => {
-          this.projects = data.projects
+          this.projects = data.projects;
           console.log(data);
         },
         err => {

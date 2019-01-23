@@ -1,21 +1,27 @@
 <ng-container *ngIf="projects">
     <ng-container *ngFor="let project of projects">
-        <ng-container *ngIf="project">
+        <div class="project-item" *ngIf="project">
             <div class="project-wrap clearfix">
                 <div class="project-title">
                     <i class="fas fa-calendar-alt"></i>
-                    <input placeholder="Complete the test task for Ruby Garage" [disabled]="disabled" value="{{ project.name }}">
+                    <div *ngIf="editing && editId === projects.indexOf(project); else notEditing" class="edit-mode">
+                        <input type="text" value="{{ project.name }}" [(ngModel)]="editValue" class="project-text-edit">
+                        <button (click)="putProject(project)">Save</button>
+                        <button (click)="onCancelEditing()">Cancel</button>
+                    </div>
+                    <ng-template #notEditing>
+                        <input type="text" value="{{ project.name }}" class="project-text">
+                    </ng-template>
                 </div>
                 <div class="project-actions">
-                    <i class="fas fa-pencil-alt"></i>
+                    <i class="fas fa-pencil-alt" (click)="onEdit(project)"></i>
                     <i class="far fa-trash-alt" (click)="deleteProject(project)"></i>
                 </div>
             </div>
             <app-task [project_id]="project.id"></app-task>
-        </ng-container>
+        </div>
     </ng-container>
 </ng-container>
-
   <div class="create-project-wrap">
       <a (click)="postProject()">
           <i class="fas fa-plus create-project-icon"></i>

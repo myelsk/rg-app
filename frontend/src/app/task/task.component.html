@@ -3,7 +3,7 @@
     <form class="add-task-form" (ngSubmit)="postTask(f); f.resetForm()" #f="ngForm">
         <input type="text" name="name" placeholder="Start typing here to create a task..." ngModel required>
         <mat-form-field>
-            <input matInput [matDatepicker]="dp3" placeholder="Set deadline date" name="deadline" ngModel>
+            <input matInput [matDatepicker]="dp3" placeholder="Set deadline date" name="deadline" ngModel required>
             <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
             <mat-datepicker #dp3 disabled="false"></mat-datepicker>
         </mat-form-field>
@@ -17,20 +17,16 @@
                 <input type="checkbox" name="done-checkbox" title="done-checkbox" [(ngModel)]="task.isDone" (click)="completeToggle(task)">
             </div>
             <div class="task-body">
-                <ng-container *ngIf="editing && editId === task.priority; else notEditing">
+                <div *ngIf="editing && editId === task.priority; else notEditing" class="edit-mode">
                     <input type="text" value="{{ task.name }}" [(ngModel)]="editValue" class="task-text-edit" [class.done]="task.isDone">
                     <button (click)="putTask(task)">Save</button>
                     <button (click)="onCancelEditing()">Cancel</button>
-                </ng-container>
+                </div>
                 <ng-template #notEditing>
                     <input type="text" value="{{ task.name }}" disabled class="task-text" [class.done]="task.isDone">
                 </ng-template>
-                <!--<ng-container *ngIf="!editing && editId !== task.priority">-->
-                    <!--<input type="text" value="{{ task.name }}" disabled>-->
-                <!--</ng-container>-->
-                <!--<input type="text" [(ngModel)]="editValue" value="{{ task.name }}" [disabled]="editing" disabled>-->
                 <span class="deadline-expired" [class.deadline-done]="task.isDone" *ngIf="task.deadline < getCurrentTimestamp()">
-                    (deadline - {{ task.deadline | date }}) - expired
+                    (deadline - {{ task.deadline | date }})
                  </span>
                 <span class="deadline" [class.deadline-done]="task.isDone" *ngIf="task.deadline > getCurrentTimestamp()">
                     (deadline - {{ task.deadline | date }})

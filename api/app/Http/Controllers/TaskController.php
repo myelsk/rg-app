@@ -33,10 +33,6 @@ class TaskController extends Controller {
         ])->first();
         $task->priority = $request->input('priority');
         $task->save();
-//        $task = Task::where('project_id', '=', $project_id)->get();
-//        $task = DB::table('tasks')->where('project_id', $project_id)->where('priority', $priority)->get();
-//        $task->priority = $request->input('priority') + 1;
-//        $task->save();
     }
 
     public function decreasePriority(Request $request, $project_id, $priority) {
@@ -59,11 +55,11 @@ class TaskController extends Controller {
 
         $task->name = $request->input('name');
         $task->isDone = $request->input('isDone');
-        $task->project_id = $request->input('project_id');
-        $task->priority = $request->input('priority');
-        $task->deadline = $request->input('deadline');
+//        $task->project_id = $request->input('project_id');
+//        $task->priority = $request->input('priority');
+//        $task->deadline = $request->input('deadline');
         $task->save();
-        return response()->json(['task' => $task], 200);
+        return response()->json($task, 200);
     }
 
     public function deleteTask($id, $priority) {

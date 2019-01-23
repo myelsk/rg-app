@@ -149,6 +149,15 @@
     outline: 0;
 }
 
+.task-body button {
+    background: #3f65ae;
+    color: #fff;
+    border: 0;
+    margin-left: 1px;
+    cursor: pointer;
+    padding: 2px 6px;
+}
+
 .task-text {
     color: #999;
     font-weight: bold;
@@ -164,4 +173,12 @@
     font-weight: bold;
     border: 1px solid #8e8e8e;
     width: 250px;
+}
+
+button[disabled] {
+    opacity: 0.3;
+}
+
+button[disabled]:hover {
+    background: linear-gradient(#94cbae, #508767);
 }

@@ -55,7 +55,7 @@ p {
     display: inline-block;
     color: #fff;
     position: relative;
-    margin-top: 49px;
+    margin-top: 19px;
     padding: 14px 53px;
     font-weight: bold;
     border-radius: 2px;
@@ -75,9 +75,37 @@ p {
     border: 0;
     background: #3f65ae;
     outline: 0;
-    height: 50px;
+    height: 24px;
 }
 
 .project-title input::placeholder {
     color: #fff;
+}
+
+.project-item {
+    margin-bottom: 30px;
+}
+
+.project-item-wrap .project-item:last-child {
+    margin-bottom: 0;
+}
+
+.edit-mode input {
+    border: 1px solid #fff;
+}
+
+.edit-mode button {
+    background: linear-gradient(#94cbae, #508767);
+    border: 1px solid #447557;
+    padding: 4px;
+    margin-left: 2px;
+    color: #fff;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+    outline: 0;
+    cursor: pointer;
+}
+
+.edit-mode button:hover {
+    background: linear-gradient(#508767, #94cbae);
 }

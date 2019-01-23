@@ -32,7 +32,7 @@ class ProjectController extends Controller {
 
         $project->name = $request->input('name');
         $project->save();
-        return response()->json(['project' => $project], 200);
+        return response()->json($project, 200);
     }
 
     public function deleteProject($id) {
