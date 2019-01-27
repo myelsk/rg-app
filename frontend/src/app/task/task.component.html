@@ -34,8 +34,8 @@
             </div>
             <div class="task-actions">
                 <div class="task-change-priority">
-                    <i class="fas fa-sort-up" (click)="increasePriority(task)"></i>
-                    <i class="fas fa-sort-down" (click)="decreasePriority(task)"></i>
+                    <div class="arrow-up" (click)="increasePriority(task)"></div>
+                    <div class="arrow-down" (click)="decreasePriority(task)"></div>
                 </div>
                 <div class="edit-task">
                     <i class="fas fa-pencil-alt" (click)="onEdit(task)"></i>

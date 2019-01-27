@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Carbon\Carbon;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
-    public function signup(Request $request) {
+    public function signup(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
@@ -31,7 +33,8 @@ class UserController extends Controller {
         ], 201);
     }
 
-    public function signin(Request $request) {
+    public function signin(Request $request)
+    {
 
         $this->validate($request, [
             'email' => 'required|email',
@@ -39,7 +42,7 @@ class UserController extends Controller {
         ]);
         $credentials = $request->only('email', 'password');
         try {
-            if(!$token = JWTAuth::attempt($credentials)) {
+            if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json([
                     'error' => 'Invalid login or password',
                 ], 401);
@@ -53,7 +56,7 @@ class UserController extends Controller {
             'message' => 'You are loggen in now!',
             'user_id' => Auth::id(),
             'token' => $token
-        ],200);
+        ], 200);
     }
 
 }

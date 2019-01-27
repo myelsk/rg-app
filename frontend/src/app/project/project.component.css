@@ -18,6 +18,7 @@ p {
     float: right;
     padding: 16px 18px 0 0;
     color: #98b0d2;
+    display: none;
 }
 
 .project-title p {
@@ -106,6 +107,14 @@ p {
     cursor: pointer;
 }
 
+.create-project-wrap a {
+    cursor: pointer;
+}
+
 .edit-mode button:hover {
     background: linear-gradient(#508767, #94cbae);
+}
+
+.project-wrap:hover .project-actions {
+    display: block;
 }

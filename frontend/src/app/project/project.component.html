@@ -10,7 +10,7 @@
                         <button (click)="onCancelEditing()">Cancel</button>
                     </div>
                     <ng-template #notEditing>
-                        <input type="text" value="{{ project.name }}" class="project-text">
+                        <input type="text" value="{{ project.name }}" class="project-text" disabled>
                     </ng-template>
                 </div>
                 <div class="project-actions">
