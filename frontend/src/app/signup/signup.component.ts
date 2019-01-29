@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -15,11 +16,11 @@ export class SignupComponent implements OnInit {
     onKeyUpMailInput: boolean;
     onKeyUpPasswordInput: boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSignup(form: NgForm) {
     this.authService.signup(form.value.name, form.value.email, form.value.password).subscribe(
-        response => console.log(response),
+        response => this.router.navigate(['signin']),
         error => {
           this.errors = error.error.errors;
           console.log(this.errors);

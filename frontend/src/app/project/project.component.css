@@ -118,3 +118,36 @@ p {
 .project-wrap:hover .project-actions {
     display: block;
 }
+
+.no-projects {
+    text-align: center;
+    padding: 15px 0;
+    background: #ddd;
+    color: #999;
+    border-radius: 5px;
+}
+
+.create-project-form button {
+    background: #3f65ae;
+    color: #fff;
+    border: 0;
+    margin-left: 1px;
+    cursor: pointer;
+    padding: 3px 10px;
+}
+
+.create-project-form input {
+    color: #8e8e8e;
+}
+
+.create-project-form {
+    text-align: center;
+}
+
+.create-project-form {
+    margin-top: 15px;
+}
+
+button[disabled] {
+    opacity: 0.2;
+}

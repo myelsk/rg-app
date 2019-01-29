@@ -61,6 +61,7 @@ export class TaskComponent implements OnInit {
         this.editing = false;
     }
 
+
     deleteTask(task: Task) {
         this.taskService.destroy('/api/task/' + task.id + '/' + task.priority + '?token=' + this.authService.getToken()).subscribe(
             res => {
@@ -85,15 +86,16 @@ export class TaskComponent implements OnInit {
 
     increasePriority(task) {
         let index = this.tasks.indexOf(task);
+        console.log(index);
         if (index > 0) {
-            this.taskService.put('/api/task/increase/' + task.project_id + '/' + (index - 1) + '?token=' + this.authService.getToken(), {priority: index}).subscribe(
-                (res) => console.log(res),
-                err => console.log(err)
+            this.taskService.put('/api/task/increase/' + task.project_id + '/' + index + '?token=' + this.authService.getToken(), {priority: index - 1}).subscribe(
+                (res) => console.log('priority increased ' + index)
+
             );
-            this.taskService.put('/api/task/decrease/' + task.project_id + '/' + index + '?token=' + this.authService.getToken(), {priority: index - 1}).subscribe(
-                (res) => console.log(res),
-                err => console.log(err)
-            );
+                    this.taskService.put('/api/task/decrease/' + task.project_id + '/' + (index - 1) + '?token=' + this.authService.getToken(), {priority: index}).subscribe(
+                        (res) => console.log('priority decreased ' + (index - 1))
+
+                    );
             [this.tasks[index], this.tasks[index - 1]] = [this.tasks[index - 1], this.tasks[index]];
         }
     }

@@ -1,13 +1,15 @@
-<ng-container *ngIf="projects">
+<ng-container *ngIf="projects && projects.length > 0; else noProjects">
     <ng-container *ngFor="let project of projects">
         <div class="project-item" *ngIf="project">
             <div class="project-wrap clearfix">
                 <div class="project-title">
                     <i class="fas fa-calendar-alt"></i>
                     <div *ngIf="editing && editId === projects.indexOf(project); else notEditing" class="edit-mode">
-                        <input type="text" value="{{ project.name }}" [(ngModel)]="editValue" class="project-text-edit">
-                        <button (click)="putProject(project)">Save</button>
-                        <button (click)="onCancelEditing()">Cancel</button>
+                        <form #f="ngForm" (ngSubmit)="putProject(project)">
+                            <input type="text" name="projectName" value="{{ project.name }}" [(ngModel)]="editValue" class="project-text-edit" required>
+                            <button type="submit" [disabled]="!f.valid">Save</button>
+                            <button (click)="onCancelEditing()">Cancel</button>
+                        </form>
                     </div>
                     <ng-template #notEditing>
                         <input type="text" value="{{ project.name }}" class="project-text" disabled>
@@ -22,8 +24,20 @@
         </div>
     </ng-container>
 </ng-container>
+<ng-template #noProjects>
+    <div class="no-projects">
+        There is no projects yet. Create your first now!
+    </div>
+</ng-template>
+<div *ngIf="createMode" class="create-project-form">
+    <form class="add-project-form" #f="ngForm" (ngSubmit)="postProject(projectName)">
+        <input type="text" name="projectName" [(ngModel)]="projectName" required>
+        <button type="submit" [disabled]="!f.valid">SAVE</button>
+        <button (click)="onCancelCreateMode()">CANCEL</button>
+    </form>
+</div>
   <div class="create-project-wrap">
-      <a (click)="postProject()">
+      <a (click)="onCreateMode()">
           <i class="fas fa-plus create-project-icon"></i>
           Add TODO List
       </a>

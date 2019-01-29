@@ -69,6 +69,5 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->delete();
         return response()->json([$tasks]);
-//        return response()->json(['message' => 'Task Deleted'], 200);
     }
 }

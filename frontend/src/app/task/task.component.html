@@ -10,7 +10,7 @@
         <button class="add-task-button" type="submit" [disabled]="!f.valid">Add Task</button>
     </form>
 </div>
-<ng-container *ngIf="tasks">
+<ng-container *ngIf="tasks && tasks.length > 0; else noTasks">
     <div class="task" *ngFor="let task of tasks">
         <ng-container *ngIf="task">
             <div class="done-checkbox">
@@ -18,9 +18,11 @@
             </div>
             <div class="task-body">
                 <div *ngIf="editing && editId === task.priority; else notEditing" class="edit-mode">
-                    <input type="text" value="{{ task.name }}" [(ngModel)]="editValue" class="task-text-edit" [class.done]="task.isDone">
-                    <button (click)="putTask(task)">Save</button>
-                    <button (click)="onCancelEditing()">Cancel</button>
+                    <form #edit="ngForm" (ngSubmit)="putTask(task)">
+                        <input type="text" name="taskName" value="{{ task.name }}" [(ngModel)]="editValue" class="task-text-edit" [class.done]="task.isDone" required>
+                        <button type="submit" [disabled]="!edit.valid">Save</button>
+                        <button (click)="onCancelEditing()">Cancel</button>
+                    </form>
                 </div>
                 <ng-template #notEditing>
                     <input type="text" value="{{ task.name }}" disabled class="task-text" [class.done]="task.isDone">
@@ -47,3 +49,8 @@
         </ng-container>
     </div>
 </ng-container>
+<ng-template #noTasks>
+    <div class="no-tasks">
+        There is no tasks yet. Create your first now!
+    </div>
+</ng-template>

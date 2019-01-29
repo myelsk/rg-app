@@ -17,22 +17,35 @@
 
 .task-body {
     line-height: 49px;
-    padding-left: 16px;
+    padding-left: 10px;
     border-left: 1px solid #efdadf;
     font-weight: 600;
     font-size: 14px;
+    display: inline-block;
+    padding-right: 23px;
+    border-right: 1px solid #e7ebea;
 }
 
 .done-checkbox {
     padding: 15px 11px 16px 18px;
     border-right: 1px solid #efdadf;
+    display: inline-block;
+    margin-right: 4px;
 }
 
 .done-checkbox input {
     cursor: pointer;
 }
+.task:hover .task-actions {
+    display: block;
+}
 
-.task div {
+.task-actions i {
+    cursor: pointer;
+}
+
+
+.task-actions div {
     display: inline-block;
 }
 
@@ -40,18 +53,7 @@
     float: right;
     font-size: 14px;
     padding: 13px 19px 21px 19px;
-    border-left: 1px solid #e7ebea;
-}
-
-.task-actions i {
-    cursor: pointer;
-}
-
-.task-change-priority .fa-sort-down {
-    position: absolute;
-    /*top: 3px;*/
-    top: 11px;
-    right: 6px;
+    display: none;
 }
 
 .delete-task i {
@@ -70,7 +72,9 @@
     position: relative;
 }
 
-
+.edit-mode {
+    display: inline-block;
+}
 
 .create-task-wrap {
     background: linear-gradient(#e1e1e1, #ccc);
@@ -180,10 +184,6 @@ button[disabled] {
     opacity: 0.3;
 }
 
-button[disabled]:hover {
-    background: linear-gradient(#94cbae, #508767);
-}
-
 .arrow-up {
     top: -11px;
     width: 0;
@@ -206,4 +206,20 @@ button[disabled]:hover {
     border-right: 5px solid transparent;
     border-top: 5px solid #999;
     cursor: pointer;
+}
+
+.no-tasks {
+    text-align: center;
+    padding: 15px 0;
+    background: #ddd;
+    color: #999;
+    border-bottom: 2px solid #b1b2a2;
+    border-right: 2px solid #b1b2a2;
+    border-left: 2px solid #b1b2a2;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.create-task-wrap button[disabled]:hover {
+    background: linear-gradient(#94cbae, #508767);
 }

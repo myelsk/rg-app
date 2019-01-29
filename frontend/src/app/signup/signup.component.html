@@ -1,12 +1,15 @@
 <div class="register-page">
     <div class="form">
         <form class="register-form" (ngSubmit)="onSignup(f)" #f="ngForm" novalidate>
-            <input type="text" id="name" name="name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{'is-invalid':name.invalid && onKeyUpNameInput}" required minlength="3"
+            <input type="text" id="name" name="name" [(ngModel)]="model.name" #name="ngModel"
+                   [ngClass]="{'is-invalid':name.invalid && onKeyUpNameInput}" required minlength="3"
                    placeholder="Name" (keyup)="onKeyUpName()">
             <div *ngIf="onKeyUpNameInput && name.invalid" class="validation-message">
                 Name should have at least 3 characters
             </div>
-            <input (keyup)="onKeyUpMail()" type="email" id="email" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{'is-invalid':email.invalid && onKeyUpMailInput}" required placeholder="Email" email>
+            <input (keyup)="onKeyUpMail()" type="email" id="email" name="email" [(ngModel)]="model.email"
+                   #email="ngModel" [ngClass]="{'is-invalid':email.invalid && onKeyUpMailInput}" required
+                   placeholder="Email" email>
             <div *ngIf="onKeyUpMailInput && email.invalid">
                 <div *ngIf="email.errors.required" class="validation-message">
                     Email field is required
@@ -15,7 +18,8 @@
                     Email should be a valid email address
                 </div>
             </div>
-            <input type="password" id="password" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':password.invalid && onKeyUpPasswordInput}" required minlength="6"
+            <input type="password" id="password" name="password" [(ngModel)]="model.password" #password="ngModel"
+                   [ngClass]="{'is-invalid':password.invalid && onKeyUpPasswordInput}" required minlength="6"
                    placeholder="Password" (keyup)="onKeyUpPassword()">
             <div *ngIf="onKeyUpPasswordInput && password.invalid" class="validation-message">
                 Password should be at least 6 characters
