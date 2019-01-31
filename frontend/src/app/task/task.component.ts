@@ -92,10 +92,10 @@ export class TaskComponent implements OnInit {
                 (res) => console.log('priority increased ' + index)
 
             );
-                    this.taskService.put('/api/task/decrease/' + task.project_id + '/' + (index - 1) + '?token=' + this.authService.getToken(), {priority: index}).subscribe(
-                        (res) => console.log('priority decreased ' + (index - 1))
+            this.taskService.put('/api/task/decrease/' + task.project_id + '/' + (index - 1) + '?token=' + this.authService.getToken(), {priority: index}).subscribe(
+                (res) => console.log('priority decreased ' + (index - 1))
 
-                    );
+            );
             [this.tasks[index], this.tasks[index - 1]] = [this.tasks[index - 1], this.tasks[index]];
         }
     }

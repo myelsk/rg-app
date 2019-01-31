@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import {environment} from "../environments/environment";
-import {Task} from "./models/Task";
 
 @Injectable({
     providedIn: 'root'
@@ -36,12 +35,3 @@ export class TaskService {
         return this.httpClient.put(environment.api_server + url, task);
     }
 }
-
-// {
-//     id: task.id,
-//         // name: task.name,
-//         // project_id: task.project_id,
-//         // deadline: task.deadline,
-//         // priority: task.priority,
-//         isDone: this.isDone
-// }
