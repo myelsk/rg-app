@@ -10,11 +10,19 @@ import {NgForm} from "@angular/forms";
 export class SigninComponent implements OnInit {
 
   error: string;
+  model: object = {};
+  errors: [];
+  onKeyUpMailInput: boolean;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
+
+  onKeyUpMail() {
+    this.onKeyUpMailInput = true;
+  }
+
 
   onSignin(form: NgForm) {
     this.authService.signin(form.value.email, form.value.password).subscribe(

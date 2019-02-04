@@ -28,10 +28,10 @@
                     <input type="text" value="{{ task.name }}" disabled class="task-text" [class.done]="task.isDone">
                 </ng-template>
                 <span class="deadline-expired" [class.deadline-done]="task.isDone" *ngIf="task.deadline < getCurrentTimestamp()">
-                    (deadline - {{ task.deadline | date }})
+                    deadline - {{ task.deadline | date }}
                  </span>
                 <span class="deadline" [class.deadline-done]="task.isDone" *ngIf="task.deadline > getCurrentTimestamp()">
-                    (deadline - {{ task.deadline | date }})
+                    deadline - {{ task.deadline | date }}
                  </span>
             </div>
             <div class="task-actions">

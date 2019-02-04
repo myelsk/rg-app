@@ -84,7 +84,6 @@ export class ProjectComponent implements OnInit {
         this.getProjects().subscribe(
             data => {
                 this.projects = data.projects;
-                console.log(data);
             },
             err => {
                 if (err.status === 401) {

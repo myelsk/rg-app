@@ -1,13 +1,23 @@
 <div class="login-page">
-  <div class="form">
-    <form class="login-form" (ngSubmit)="onSignin(f)" #f="ngForm">
-      <input type="email" id="email" name="email" ngModel required placeholder="Email">
-      <input type="password" id="password" name="password" ngModel required placeholder="Password">
-      <button type="submit" [disabled]="!f.valid">Sign In</button>
-      <p class="message">Not registered? <a routerLink="/signup">Create an account</a></p>
-    </form>
-  </div>
-  <div *ngIf="error" class="alert">
-    {{ error }}
-  </div>
+    <div class="form">
+        <form class="login-form" (ngSubmit)="onSignin(f)" #f="ngForm">
+            <input type="email" id="email" name="email" [(ngModel)]="model.email" email required placeholder="Email"
+                   (keyup)="onKeyUpMail()" #email="ngModel"
+                   [ngClass]="{'is-invalid':email.invalid && onKeyUpMailInput}">
+            <div *ngIf="onKeyUpMailInput && email.invalid">
+                <div *ngIf="email.errors.required" class="validation-message">
+                    Email field is required
+                </div>
+                <div *ngIf="email.errors.email" class="validation-message">
+                    Email should be a valid email address
+                </div>
+            </div>
+            <input type="password" id="password" name="password" ngModel required placeholder="Password">
+            <button type="submit" [disabled]="!f.valid">Sign In</button>
+            <p class="message">Not registered? <a routerLink="/signup">Create an account</a></p>
+        </form>
+    </div>
+    <div *ngIf="error" class="alert">
+        {{ error }}
+    </div>
 </div>
