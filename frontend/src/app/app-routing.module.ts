@@ -7,6 +7,7 @@ import {ProjectComponent} from "./project/project.component";
 import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
+  { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   {
