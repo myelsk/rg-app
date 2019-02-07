@@ -18,7 +18,7 @@ To deploy this project on your local machine you want to:
 5. Install [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/) on your local machine in case if you dont have these.
 6. Create ```.env``` file in root of ```api``` folder by example ```.env.example``` Make sure that you configured your ```.env``` file right for connect to db
 7. ```chmod -R 777 storage```
-8. ```cd .. && docker-compose up -d```
+8. In root directory of the project ```docker-compose up -d```
 9. ```cd frontend && ng build```
 10. ```docker exec -it fpm bash``` Once you are in container. You need to migrate ```php artisan migrate```
 11. After you've done all af these steps you should be able to reach the application by hitting in your browser http://localhost:8085
