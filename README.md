@@ -21,7 +21,7 @@ To deploy this project on your local machine you want to:
 8. In root directory of the project ```docker-compose up -d```
 9. ```cd frontend && ng build```
 10. ```docker exec -it fpm bash``` Once you are in container. You need to migrate ```php artisan migrate```
-Then exit from container by typing ```exit``` and do ```docker-compose restart```
+After successful migration exit from container by typing ```exit``` and type ```docker-compose restart```
 11. After you've done all af these steps you should be able to reach the application by hitting in your browser http://localhost:8085
 
 If after this steps you still facing some issues please contact me kovalenko.yevhenii@gmail.com
