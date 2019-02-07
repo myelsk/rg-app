@@ -19,7 +19,7 @@ As local and production environment - [docker](https://www.docker.com/) and [doc
 For JWT Auth was used [jwt-auth](https://github.com/tymondesigns/jwt-auth)
 
 
-Deployed on [Digitalocean](https://www.digitalocean.com/) and can be reached here (Cannot for now :D) <br>
+Deployed on [DigitalOcean](https://www.digitalocean.com/) and can be reached here (Cannot for now :D) <br>
 
 In order to deploy this application locally you need on your local machine [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/) <br>
 To deploy this project on your local machine you want to:
