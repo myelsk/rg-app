@@ -16,7 +16,7 @@ To deploy this project on your local machine you want to:
 3. ```cp node_modules.tar.gz ../frontend/ && cd ../frontend/ && tar -xvzf node_modules.tar.gz && sudo rm -rf node_modules.tar.gz```
 4. ```cd ../includes/ && cp vendor.tar.gz ../api/ && cd ../api/ && tar -xvzf vendor.tar.gz && sudo rm -rf vendor.tar.gz```
 5. Install [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/) on your local machine in case if you dont have these.
-6. Create ```.env``` file in root of ```api``` folder by example ```.env.example```
+6. Create ```.env``` file in root of ```api``` folder by example ```.env.example``` Make sure that you configured your ```.env``` file right for connect to db
 7. ```chmod -R 777 storage```
 8. ```cd .. && docker-compose up -d```
 9. ```cd frontend && ng build```
