@@ -1,7 +1,7 @@
 Stack of technologies:
 
-WebServer - [nginx](http://nginx.org/)
-Proccess Manager - [FPM](http://php.net/manual/en/install.fpm.php)
+WebServer - [nginx](http://nginx.org/) <br>
+Proccess Manager - [FPM](http://php.net/manual/en/install.fpm.php) <br>
 Backend (api) - [Laravel Framework 5.7.19](https://laravel.com/) <br>
 Database - [Mysql v5.7](https://www.mysql.com/) <br>
 Frontend - [Angular CLI: 7.1.4](https://angular.io/) <br>
