@@ -8,7 +8,7 @@ Frontend - [Angular CLI: 7.1.4](https://angular.io/) <br>
 As local and production environment - [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) <br>
 Deployed on [Digitalocean](https://www.digitalocean.com/) and can be reached here (Cannot for now :D) <br>
 
-In order to deploy this application locally you need on your local machine [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/)
+In order to deploy this application locally you need on your local machine [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/) <br>
 To deploy this project on your local machine you want to:
 
 1. ```git clone https://github.com/myelsk/rg-app.git```
