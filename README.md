@@ -26,8 +26,8 @@ To deploy this project on your local machine you want to:
 
 1. ```git clone https://github.com/myelsk/rg-app.git```
 2. ```cd rg-app/includes```
-3. ```cp node_modules.tar.gz ../frontend/ && cd ../frontend/ && tar -xvzf node_modules.tar.gz && sudo rm -rf node_modules.tar.gz```
-4. ```cd ../includes/ && cp vendor.tar.gz ../api/ && cd ../api/ && tar -xvzf vendor.tar.gz && sudo rm -rf vendor.tar.gz```
+3. ```cp node_modules.tar.gz ../frontend/ && cd ../frontend/ && sudo tar -xvzf node_modules.tar.gz && sudo rm -rf node_modules.tar.gz```
+4. ```cd ../includes/ && cp vendor.tar.gz ../api/ && cd ../api/ && sudo tar -xvzf vendor.tar.gz && sudo rm -rf vendor.tar.gz```
 5. Create ```.env``` file in root of ```api``` folder by example ```.env.example``` Make sure that you configured your ```.env``` file right for connect to db
 6. ```chmod -R 777 storage```
 7. In root directory of the project ```docker-compose up -d```
