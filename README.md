@@ -1,4 +1,4 @@
-This is a simple todo application created as test work for [RubyGarage](https://rubygarage.com.ua/)
+This is a simple todo application created as test work for [RubyGarage courses](https://rubygarage.com.ua/)
 
 You able to:
 
