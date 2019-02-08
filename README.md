@@ -5,7 +5,7 @@ You able to:
 - create/update/delete projects;
 - create/update/delete tasks in your project;
 - prioritize tasks in your project;
-- pick deadline for your project;
+- pick deadline for your task;
 - mark task as done;
 
 Stack of technologies:
@@ -38,6 +38,7 @@ After successful migration exit from container by typing ```exit``` and type ```
 
 If after this steps you still facing some issues please contact me kovalenko.yevhenii@gmail.com
 
-SQL TASK
+SQL 
+
 
 #todo
