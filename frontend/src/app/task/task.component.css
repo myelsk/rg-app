@@ -37,6 +37,7 @@
 .done-checkbox input {
     cursor: pointer;
 }
+
 .task:hover .task-actions {
     display: block;
 }
@@ -45,13 +46,12 @@
     cursor: pointer;
 }
 
-
 .task-actions div {
     display: inline-block;
 }
 
 /*.task-change-priority {*/
-    /**/
+/**/
 /*}*/
 
 /*.edit-task {}*/
@@ -132,7 +132,7 @@
     border: 1px solid #447557;
     border-radius: 4px;
     color: #fff;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
     outline: 0;
 }
 
