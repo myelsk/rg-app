@@ -36,7 +36,7 @@ To deploy this project on your local machine you want to:
 After successful migration exit from container by typing ```exit``` and type ```docker-compose restart```
 10. After you've done all of these steps you should be able to reach the application by hitting in your browser http://localhost:8085
 
-If after this steps you still facing some issues please contact me kovalenko.yevhenii@gmail.com
+If after these steps you still facing some issues please contact me kovalenko.yevhenii@gmail.com
 
 SQL 
 
