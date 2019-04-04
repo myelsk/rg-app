@@ -71,8 +71,10 @@ ORDER BY projects.name ASC;
 get the tasks for all projects having the name beginning with “N” letter
 
 ```
-SELECT * FROM tasks 
-WHERE name LIKE 'N%';
+SELECT tasks.id, tasks.name, tasks.status 
+FROM tasks,projects 
+WHERE tasks.project_id=projects.id 
+AND projects.name LIKE 'N%'
 ```
 
 get the list of all projects containing the ‘a’ letter in the middle of the name, and show the tasks count near each project. Mention that there can exist projects without tasks and tasks with project_id=NULL
