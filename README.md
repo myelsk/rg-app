@@ -80,11 +80,9 @@ AND projects.name LIKE 'N%';
 get the list of all projects containing the ‘a’ letter in the middle of the name, and show the tasks count near each project. Mention that there can exist projects without tasks and tasks with project_id=NULL
 
 ```
-SELECT projects.name, COUNT(tasks.id) 
-FROM projects 
-RIGHT JOIN tasks ON projects.id = project_id 
-WHERE projects.name LIKE '%a%' 
-GROUP BY projects.name;
+SELECT projects.name, 
+(SELECT COUNT(*) FROM tasks WHERE tasks.project_id=projects.id)
+FROM projects WHERE projects.name LIKE '%a%';
 ```
 
 get the list of tasks with duplicate names. Order alphabetically
