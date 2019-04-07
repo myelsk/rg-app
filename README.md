@@ -19,7 +19,7 @@ As local and production environment - [docker](https://www.docker.com/) and [doc
 For JWT Auth was used [jwt-auth](https://github.com/tymondesigns/jwt-auth)
 
 
-Deployed on [DigitalOcean](https://www.digitalocean.com/) and can be reached here (Cannot for now :D) <br>
+Deployed on [DigitalOcean](https://www.digitalocean.com/) and can be reached here http://159.65.42.68:8085 <br>
 
 In order to deploy this application locally you need on your local machine [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [docker-compose](https://docs.docker.com/compose/install/) <br>
 To deploy this project on your local machine you want to:
@@ -36,9 +36,80 @@ To deploy this project on your local machine you want to:
 After successful migration exit from container by typing ```exit``` and type ```docker-compose restart```
 10. After you've done all of these steps you should be able to reach the application by hitting in your browser http://localhost:8085
 
-If after this steps you still facing some issues please contact me kovalenko.yevhenii@gmail.com
+If after these steps you still facing some issues please contact me kovalenko.yevhenii@gmail.com
 
-SQL 
+SQL task
 
+get all statuses, not repeating, alphabetically ordered
 
-#todo
+```
+SELECT DISTINCT status 
+FROM tasks 
+ORDER BY status;
+```
+
+get the count of all tasks in each project, order by tasks count descending
+
+```
+SELECT COUNT(*) AS amount, projects.name 
+FROM tasks 
+INNER JOIN projects ON project_id = projects.id 
+GROUP BY projects.name 
+ORDER BY amount DESC;
+```
+
+get the count of all tasks in each project, order by projects names
+
+```
+SELECT COUNT(*) AS amount, projects.name 
+FROM tasks 
+INNER JOIN projects ON project_id = projects.id 
+GROUP BY projects.name 
+ORDER BY projects.name ASC;
+```
+
+get the tasks for all projects having the name beginning with “N” letter
+
+```
+SELECT tasks.id, tasks.name, tasks.status 
+FROM tasks,projects 
+WHERE tasks.project_id=projects.id 
+AND projects.name LIKE 'N%';
+```
+
+get the list of all projects containing the ‘a’ letter in the middle of the name, and show the tasks count near each project. Mention that there can exist projects without tasks and tasks with project_id=NULL
+
+```
+SELECT projects.name, 
+(SELECT COUNT(*) FROM tasks WHERE tasks.project_id=projects.id)
+FROM projects WHERE projects.name LIKE '%a%';
+```
+
+get the list of tasks with duplicate names. Order alphabetically
+```
+SELECT tasks.name AS name, COUNT(tasks.name)
+FROM tasks
+GROUP BY tasks.name
+HAVING COUNT(tasks.name) > 1
+ORDER BY name ASC;
+```
+get the list of tasks having several exact matches of both name and status, from the project ‘Garage’. Order by matches count
+```
+SELECT tasks.name AS task_name, COUNT(tasks.name) AS task_count
+FROM tasks
+LEFT JOIN projects ON projects.id = tasks.project_id
+WHERE projects.name LIKE '%Garage'
+GROUP BY tasks.name HAVING COUNT(tasks.name) > 1
+ORDER BY task_count;
+```
+get the list of project names having more than 10 tasks in status ‘completed’. Order by project_id
+
+```
+SELECT projects.name AS projects_name, 
+COUNT(tasks.id) AS task_count 
+FROM projects 
+LEFT JOIN tasks ON projects.id = tasks.project_id 
+WHERE tasks.status='completed' 
+GROUP BY projects_name 
+HAVING COUNT(tasks.id) > 10;
+```
