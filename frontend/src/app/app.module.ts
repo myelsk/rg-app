@@ -27,7 +27,7 @@ import {AuthGuard} from "./auth.guard";
         HttpClientModule,
         AppRoutingModule,
         FormsModule,
-        MaterialModule
+        MaterialModule,
     ],
     providers: [
         AuthService, AuthGuard

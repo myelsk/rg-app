@@ -70,4 +70,12 @@ class TaskController extends Controller
         $task->delete();
         return response()->json([$tasks]);
     }
+
+    public function putDeadline(Request $request, $id) {
+        $task = Task::find($id);
+        if (!$task) return response()->json(['message' => 'document not found']);
+        $task->deadline = $request->input('deadline');
+        $task->save();
+        return response()->json($task, 200);
+    }
 }

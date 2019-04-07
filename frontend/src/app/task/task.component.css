@@ -3,6 +3,7 @@
     border-right: 2px solid #b1b2a2;
     border-left: 2px solid #b1b2a2;
     color: #999;
+    position: relative;
 }
 
 .task:last-child {
@@ -13,6 +14,10 @@
 
 .task:hover {
     background: #fcfed5;
+}
+
+.task:hover .edit-deadline {
+    display: block;
 }
 
 .task-body {
@@ -146,6 +151,7 @@
     width: 160px;
     display: inline-block;
     margin-left: 10px;
+    position: relative;
 }
 
 .deadline {
@@ -238,4 +244,13 @@ button[disabled] {
 
 .create-task-wrap button[disabled]:hover {
     background: linear-gradient(#94cbae, #508767);
+}
+
+.edit-deadline {
+    position: absolute;
+    top: 14px;
+    right: -9px;
+    display: none;
+    cursor: pointer;
+    color: #999;
 }

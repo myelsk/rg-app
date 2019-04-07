@@ -4,6 +4,7 @@ import {AuthService} from "../auth.service";
 import {Task} from "../models/Task";
 import {NgForm} from "@angular/forms";
 import {Observable} from "rxjs/index";
+import {MatDatepickerInputEvent} from "@angular/material";
 
 @Component({
     selector: 'app-task',
@@ -45,7 +46,7 @@ export class TaskComponent implements OnInit {
     }
 
     putTask(task) {
-        this.taskService.put('/api/task/' + task.id + "?token=" + this.authService.getToken(), {
+        this.taskService.put('/api/task/' + task.id + '?token=' + this.authService.getToken(), {
             name: this.editValue,
             isDone: task.isDone,
         }).subscribe(
@@ -69,7 +70,6 @@ export class TaskComponent implements OnInit {
                 if (index > -1) {
                     this.tasks.splice(index, 1);
                 }
-                console.log(res);
             }
         );
     }
@@ -86,14 +86,9 @@ export class TaskComponent implements OnInit {
 
     increasePriority(task) {
         const index = this.tasks.indexOf(task);
-        console.log(index);
         if (index > 0) {
-            this.taskService.put('/api/task/increase/' + task.project_id + '/' + index + '?token=' + this.authService.getToken(), {priority: index - 1}).subscribe(
-                (res) => console.log('priority increased ' + index)
-            );
-            this.taskService.put('/api/task/decrease/' + task.project_id + '/' + (index - 1) + '?token=' + this.authService.getToken(), {priority: index}).subscribe(
-                (res) => console.log('priority decreased ' + (index - 1))
-            );
+            this.taskService.put('/api/task/increase/' + task.project_id + '/' + index + '?token=' + this.authService.getToken(), {priority: index - 1}).subscribe();
+            this.taskService.put('/api/task/decrease/' + task.project_id + '/' + (index - 1) + '?token=' + this.authService.getToken(), {priority: index}).subscribe();
             [this.tasks[index], this.tasks[index - 1]] = [this.tasks[index - 1], this.tasks[index]];
         }
     }
@@ -101,14 +96,8 @@ export class TaskComponent implements OnInit {
     decreasePriority(task) {
         const index = this.tasks.indexOf(task);
         if (index < this.tasks.length - 1) {
-            this.taskService.put('/api/task/decrease/' + task.project_id + '/' + index + '?token=' + this.authService.getToken(), {priority: index + 1}).subscribe(
-                (res) => console.log(res),
-                err => console.log(err)
-            );
-            this.taskService.put('/api/task/increase/' + task.project_id + '/' + (index + 1) + '?token=' + this.authService.getToken(), {priority: index}).subscribe(
-                (res) => console.log(res),
-                err => console.log(err)
-            );
+            this.taskService.put('/api/task/decrease/' + task.project_id + '/' + index + '?token=' + this.authService.getToken(), {priority: index + 1}).subscribe();
+            this.taskService.put('/api/task/increase/' + task.project_id + '/' + (index + 1) + '?token=' + this.authService.getToken(), {priority: index}).subscribe();
             [this.tasks[index], this.tasks[index + 1]] = [this.tasks[index + 1], this.tasks[index]];
         }
     }
@@ -120,7 +109,14 @@ export class TaskComponent implements OnInit {
                     return a.priority - b.priority;
                 });
             },
-            err => console.log(err)
+        );
+    }
+
+    putDeadline(task, event: MatDatepickerInputEvent<Date>) {
+        this.taskService.put('/api/task/deadline/' + task.id + '?token=' + this.authService.getToken(), {deadline: new Date(event.value).getTime()}).subscribe(
+            res => {
+                task.deadline = new Date(event.value).getTime();
+            }
         );
     }
 

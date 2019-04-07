@@ -48,6 +48,11 @@ Route::put('/task/{id}', [
     'middleware' => 'auth.jwt'
 ]);
 
+Route::put('/task/deadline/{id}', [
+    'uses' => 'TaskController@putDeadline',
+    'middleware' => 'auth.jwt'
+]);
+
 Route::delete('/task/{id}/{priority}', [
     'uses' => 'TaskController@deleteTask',
     'middleware' => 'auth.jwt'

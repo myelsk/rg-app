@@ -24,7 +24,6 @@ export class SignupComponent implements OnInit {
             response => this.router.navigate(['signin']),
             error => {
                 this.errors = error.error.errors;
-                console.log(this.errors);
             }
         );
     }

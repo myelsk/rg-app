@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Router} from "@angular/router";
+import {environment} from "../environments/environment";
 
 @Injectable()
 
@@ -15,7 +16,7 @@ export class AuthService {
 
     signup(username: string, email: string, password: string) {
 
-        return this.http.post('http://localhost:8085/api/user', {
+        return this.http.post(environment.api_server + '/api/user', {
             name: username,
             email: email,
             password: password
@@ -24,7 +25,7 @@ export class AuthService {
 
 
     signin(email: string, password: string) {
-        return this.http.post('http://localhost:8085/api/user/signin', {
+        return this.http.post(environment.api_server + '/api/user/signin', {
             email: email,
             password: password
         }, {headers: new HttpHeaders({'X-Requested-With': 'XMLHttpRequest'})}).pipe(
