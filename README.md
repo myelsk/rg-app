@@ -1,5 +1,4 @@
-This is a simple todo application created as test work for [RubyGarage courses](https://rubygarage.com.ua/)
-
+This is a simple todo application
 You able to:
 
 - create/update/delete projects;
