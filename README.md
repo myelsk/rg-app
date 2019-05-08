@@ -1,4 +1,4 @@
-This is a simple todo application
+This is a simple todo application <br>
 You able to:
 
 - create/update/delete projects;
